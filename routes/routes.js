@@ -2,16 +2,22 @@ var questionsController = require("../controllers/questions");
 var appRouter = function (app) {
 
   app.get("/api/questions", function(req, res) {    
-    
     let query = req.query
-    questionsController.getQuestions(query, (err, data)=>{
-      if(err){
-        res.status(500).send("Internal error occured");
-      }
-      res.json(data);
-      // res.status(200).send("Welcome to our restful API");
-    })
-   
+    return questionsController.getQuestions(query)
+    .then(res_data =>{
+    //  let finalArray = []
+    //   // res_data.values(value => {
+    //   //   console.log("set value",value)
+        
+    //   // })
+    //   for (let item of res_data){
+    //     finalArray.push(item)
+    //   }
+      res.json({"sometning": res_data});
+    }).catch(e=>{
+      console.log("dadada errrer", e)
+      res.status(500).send("Some thing went wrong");
+    })    
   });
 }
 
