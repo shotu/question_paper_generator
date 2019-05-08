@@ -26,14 +26,13 @@ const getQuestions = (type, sum) => {
     return getAllCombinationOfQuestionsForSum(sum, allQuestionsOfPassedType)
     .then(data=> {
       let finalArray = []
-      
-      for (let item of data){
-        finalArray.push(item)
-      }
+      // for (let item of data){
+      //   finalArray.push(item)
+      // }
       // here we have all the combinations, now we can select any random combination from array
-      let lenOfArrayCombination = finalArray.length;
+      let lenOfArrayCombination = data.length;
       let rand_index = Math.floor(Math.random() * Math.floor(lenOfArrayCombination-1))
-      resolve(finalArray[rand_index])
+      resolve(data[rand_index])
     }).catch(e =>{
       reject(e);
     })

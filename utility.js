@@ -1,14 +1,14 @@
 
-let out_put_set = new Set();
+let out_put_array = [];
 
 function printAllSubsetsRec(arr, n, v, sum){
   //  If remaining sum is 0, then print all 
   //  elements of current subset.
   if(sum == 0) {
-    for (let i = 0; i <  v.length; i++){
+    // for (let i = 0; i <  v.length; i++){
       // console.log("i .....#{i}", v[i]);
-      out_put_set.add(v)
-    }
+      out_put_array.push(v)
+    // }
     return 
   }
       
@@ -26,11 +26,11 @@ function printAllSubsetsRec(arr, n, v, sum){
 }
 
 exports.getCombinations = (questions_array, n, v, sum) => {
-  
+  out_put_array = []
   return new Promise((resolve, reject)=>{
     try {
       printAllSubsetsRec(questions_array, n, v, sum);
-      resolve(out_put_set);
+      resolve(out_put_array);
     } catch (err) {
         reject(err);
     }
