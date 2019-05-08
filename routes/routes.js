@@ -2,13 +2,9 @@ var questionsController = require("../controllers/questions");
 var appRouter = function (app) {
 
   app.get("/api/questions", function(req, res) {    
-    console.log("page ",req.query.page)
-    let pageNumber = req.query.page;
-    let marks = 100;
-    let easy = 50;
-    let medium = 25;
-    let hard = 25;
-    questionsController.getQuestions(marks, easy, medium, hard, (err, data)=>{
+    
+    let query = req.query
+    questionsController.getQuestions(query, (err, data)=>{
       if(err){
         res.status(500).send("Internal error occured");
       }
